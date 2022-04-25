@@ -18,9 +18,9 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);
             // Error Fix Made by Davit Margarian
             // URL padding fix
-            String url = markdown.substring(openParen + 1, closeParen);
+            /*String url = markdown.substring(openParen + 1, closeParen);
             url = url.replaceAll("^\s*", "");
-            url = url.replaceAll("\s*$", "");
+            url = url.replaceAll("\s*$", "");*/
 
             toReturn.add(url);
             currentIndex = closeParen + 1;
