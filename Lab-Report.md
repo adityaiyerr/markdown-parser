@@ -8,4 +8,5 @@
 ![Image](Lab2Image3.png)
 ![Image](Lab2Image2.png)
 
-1. The first error involves an error produced if there is a white space in the URL provided. This results in an infinite loop, which is resolved using the `.resolve` function.
+1. The first error involves an error produced if there is a white space in the URL provided. This results in an infinite loop, which is resolved using the `.substring` and `.replace` functions.
+2. The second error involves a situation where there is no 
