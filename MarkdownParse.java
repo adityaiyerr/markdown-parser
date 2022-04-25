@@ -16,14 +16,19 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            // Error Fix Made by Davit Margarian
+            // URL padding fix
+            String url = markdown.substring(openParen + 1, closeParen);
+            url = url.replaceAll("^\s*", "");
+            url = url.replaceAll("\s*$", "");
+
+            toReturn.add(url);
             currentIndex = closeParen + 1;
-            int firstExclaim = markdown.indexOf("!", currentIndex);
-            int secondExclaim = markdown.indexOf("!", firstExclaim);
-            int openParen2 = markdown.indexOf("(", secondExclaim);
-            int closeParen2 = markdown.indexOf(")", openParen2);
-            toReturn.add(markdown.substring(openParen2 + 1, closeParen2));
-            currentIndex = closeParen2 + 1;
+            // Error Fix Made by Ravi Shende
+            //handle errors with empty lines at the end
+            if(markdown.indexOf("[", currentIndex) == -1){
+                break;
+            }
         }
         return toReturn;
     }
@@ -32,7 +37,10 @@ public class MarkdownParse {
     public static void main(String[] args) throws IOException {
         Path fileName = Path.of(args[0]);
         String content = Files.readString(fileName);
-        ArrayList<String> links = getLinks(content);
-	    System.out.println(links);
+        // Error Fix Made by Leo Hu
+        if (content.contains("(") == true && content.contains("(") == true) {
+            ArrayList<String> links = getLinks(content);
+                System.out.println(links);
+        }
     }
 }
