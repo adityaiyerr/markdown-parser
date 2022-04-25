@@ -20,15 +20,15 @@ public class MarkdownParse {
             // URL padding fix
             /*String url = markdown.substring(openParen + 1, closeParen);
             url = url.replaceAll("^\s*", "");
-            url = url.replaceAll("\s*$", "");*/
+            url = url.replaceAll("\s*$", "");
 
-            toReturn.add(url);
+            toReturn.add(url);*/
             currentIndex = closeParen + 1;
             // Error Fix Made by Ravi Shende
             //handle errors with empty lines at the end
-            if(markdown.indexOf("[", currentIndex) == -1){
+            /*if(markdown.indexOf("[", currentIndex) == -1){
                 break;
-            }
+            }*/
         }
         return toReturn;
     }
@@ -38,9 +38,11 @@ public class MarkdownParse {
         Path fileName = Path.of(args[0]);
         String content = Files.readString(fileName);
         // Error Fix Made by Leo Hu
-        if (content.contains("(") == true && content.contains("(") == true) {
+        /*if (content.contains("(") == true && content.contains("(") == true) {
             ArrayList<String> links = getLinks(content);
                 System.out.println(links);
-        }
+        }*/
+        ArrayList<String> links = getLinks(content);
+        System.out.println(links);
     }
 }
