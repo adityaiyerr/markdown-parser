@@ -16,14 +16,14 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            // Error Fix Made by Davit Margarian
+            /*// Error Fix Made by Davit Margarian
             // URL padding fix
             String url = markdown.substring(openParen + 1, closeParen);
             url = url.replaceAll("^\s*", "");
             url = url.replaceAll("\s*$", "");
 
             toReturn.add(url);
-            currentIndex = closeParen + 1;
+            currentIndex = closeParen + 1;*/
             // Error Fix Made by Ravi Shende
             //handle errors with empty lines at the end
             if(markdown.indexOf("[", currentIndex) == -1){
